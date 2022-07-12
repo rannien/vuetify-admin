@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-navigation-drawer app v-model="drawer" absolute temporary>
+    <v-navigation-drawer app v-model="state.drawer" absolute temporary>
       <v-list-item>
         <v-list-item-content>
           <v-list-item-title class="text-h6"> Application </v-list-item-title>
@@ -26,7 +26,7 @@
     </v-navigation-drawer>
 
     <v-app-bar app color="primary" dark>
-      <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
+      <v-app-bar-nav-icon @click="state.drawer = true"></v-app-bar-nav-icon>
 
       <div class="d-flex align-center v-toolbar__title">
         <v-img
@@ -80,23 +80,13 @@
   </v-app>
 </template>
 
-<script lang="ts">
-// import HelloWorld from './components/HelloWorld';
+<script setup lang="ts">
+import { reactive } from 'vue';
 
-export default {
-  name: 'App',
+const items = reactive([
+  { title: 'Home', icon: 'mdi-view-dashboard', url: '/' },
+  { title: 'About', icon: 'mdi-help-box', url: '/about' },
+]);
 
-  components: {
-    // HelloWorld,
-  },
-
-  data: () => ({
-    drawer: false,
-    items: [
-      { title: 'Home', icon: 'mdi-view-dashboard', url: '/' },
-      { title: 'About', icon: 'mdi-help-box', url: '/about' },
-    ],
-    right: null,
-  }),
-};
+const state = reactive({ drawer: false });
 </script>
