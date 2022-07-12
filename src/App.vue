@@ -1,7 +1,36 @@
 <template>
   <v-app>
+    <v-navigation-drawer app v-model="drawer" absolute temporary>
+      <v-list-item>
+        <v-list-item-content>
+          <v-list-item-title class="text-h6"> Application </v-list-item-title>
+          <v-list-item-subtitle> subtext </v-list-item-subtitle>
+        </v-list-item-content>
+      </v-list-item>
+
+      <v-divider></v-divider>
+
+      <v-list dense nav>
+        <v-list-item v-for="item in items" :key="item.title" link>
+          <v-list-item-icon>
+            <v-icon>{{ item.icon }}</v-icon>
+          </v-list-item-icon>
+
+          <router-link :to="item.url">
+            <v-list-item-content>
+              <v-list-item-title>
+                {{ item.title }}
+              </v-list-item-title>
+            </v-list-item-content>
+          </router-link>
+        </v-list-item>
+      </v-list>
+    </v-navigation-drawer>
+
     <v-app-bar app color="primary" dark>
-      <div class="d-flex align-center">
+      <v-app-bar-nav-icon @click="drawer = true"></v-app-bar-nav-icon>
+
+      <div class="d-flex align-center v-toolbar__title">
         <v-img
           alt="Vuetify Logo"
           class="shrink mr-2"
@@ -44,9 +73,12 @@
     </v-app-bar>
 
     <v-main>
-      <router-view />
-      <!-- <HelloWorld /> -->
+      <v-container fluid>
+        <router-view />
+      </v-container>
     </v-main>
+
+    <v-footer app> </v-footer>
   </v-app>
 </template>
 
@@ -61,7 +93,12 @@ export default {
   },
 
   data: () => ({
-    //
+    drawer: false,
+    items: [
+      { title: 'Home', icon: 'mdi-view-dashboard', url: '/' },
+      { title: 'About', icon: 'mdi-help-box', url: '/about' },
+    ],
+    right: null,
   }),
 };
 </script>
