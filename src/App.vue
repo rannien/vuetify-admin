@@ -81,9 +81,9 @@
 </template>
 
 <script setup lang="ts">
-import { reactive } from 'vue';
+import { reactive, ref } from 'vue';
 
-const items = reactive([
+const items = ref([
   { title: 'Home', icon: 'mdi-view-dashboard', url: '/' },
   { title: 'About', icon: 'mdi-help-box', url: '/about' },
 ]);
