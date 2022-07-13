@@ -5,7 +5,7 @@
     <v-data-table
       :headers="headers"
       :items="wines"
-      :items-per-page="5"
+      :items-per-page="15"
       class="elevation-1"
     ></v-data-table>
   </div>
@@ -24,13 +24,11 @@ const headers = [
   { text: 'Region', value: 'region' },
   { text: 'Year', value: 'year' },
 ];
-let wines = ref([]);
+const wines = ref([]);
 
 const getItems = async () => {
   const response = await fetch('http://localhost/api/v1/wines').then((r) => r.json());
-  wines = ref(response.data);
-
-  console.log(wines);
+  wines.value = response.data;
 };
 
 onMounted(getItems);
