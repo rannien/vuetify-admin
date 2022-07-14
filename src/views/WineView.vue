@@ -4,7 +4,7 @@
 
     <v-data-table
       :headers="headers"
-      :items="wines"
+      :items="wineStore.wines"
       :items-per-page="15"
       class="elevation-1"
     ></v-data-table>
@@ -12,7 +12,10 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted } from 'vue';
+// import { ref } from 'vue';
+import useWineStore from '@/stores/WineStore';
+
+const wineStore = useWineStore();
 
 const headers = [
   {
@@ -24,12 +27,6 @@ const headers = [
   { text: 'Region', value: 'region' },
   { text: 'Year', value: 'year' },
 ];
-const wines = ref([]);
 
-const getItems = async () => {
-  const response = await fetch('http://localhost/api/v1/wines').then((r) => r.json());
-  wines.value = response.data;
-};
-
-onMounted(getItems);
+// onMounted(getItems);
 </script>

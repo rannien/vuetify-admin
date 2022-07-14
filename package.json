@@ -19,6 +19,7 @@
     "vuetify": "^2.6.0"
   },
   "devDependencies": {
+    "@babel/plugin-syntax-top-level-await": "^7.14.5",
     "@types/jest": "^27.0.1",
     "@typescript-eslint/eslint-plugin": "^5.4.0",
     "@typescript-eslint/parser": "^5.4.0",

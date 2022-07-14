@@ -56,7 +56,7 @@
         </v-btn>
       </router-link>
 
-      <router-link to="/about">
+      <router-link to="/wines">
         <v-btn text>
           <span class="mr-2">About</span>
         </v-btn>
@@ -85,7 +85,7 @@ import { reactive, ref } from 'vue';
 
 const items = ref([
   { title: 'Home', icon: 'mdi-view-dashboard', url: '/' },
-  { title: 'About', icon: 'mdi-help-box', url: '/about' },
+  { title: 'Wines', icon: 'mdi-help-box', url: '/wines' },
 ]);
 
 const state = reactive({ drawer: false });
